@@ -21,6 +21,9 @@ module.exports = {
       },
       height: {
         '60': '60px',
+      },
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(320px, 1fr))',
       }
     },
   },

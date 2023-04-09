@@ -551,6 +551,14 @@ html {
   display: flex;
 }
 
+.grid{
+  display: grid;
+}
+
+.hidden{
+  display: none;
+}
+
 .w-full{
   width: 100%;
 }
@@ -564,6 +572,10 @@ html {
   max-width: 32rem;
 }
 
+.grid-cols-auto-fill{
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
 .flex-col{
   flex-direction: column;
 }
@@ -574,6 +586,14 @@ html {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.justify-items-center{
+  justify-items: center;
+}
+
+.gap-8{
+  gap: 2rem;
 }
 
 .space-x-10 > :not([hidden]) ~ :not([hidden]){
@@ -679,6 +699,11 @@ html {
 }
 
 @media (min-width: 768px){
+  .md\:my-12{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .md\:mb-0{
     margin-bottom: 0px;
   }
