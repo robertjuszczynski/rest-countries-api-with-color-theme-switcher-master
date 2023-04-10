@@ -23,7 +23,16 @@ module.exports = {
         '60': '60px',
       },
       gridTemplateColumns: {
-        'auto-fill': 'repeat(auto-fill, minmax(320px, 1fr))',
+        'auto-fill': 'repeat(auto-fill, 268px)',
+      },
+      keyframes: {
+        fade: {
+          '0%': { opacity: '0%' },
+          '100%': { opacity: '100%' },
+        },
+      },
+      animation: {
+        fade: 'fade 0.5s ease-in-out',
       }
     },
   },
