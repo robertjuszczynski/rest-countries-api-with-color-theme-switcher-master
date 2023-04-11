@@ -13,16 +13,21 @@
   </head>
   <body class="bg-Very-Light-Gray-Light-Mode-Background text-sm">
     <nav
-      class="overflow-hidden flex items-center justify-between bg-White-Dark-Mode-Text-&-Light-Mode-Elements px-6 py-9 shadow-md md:px-16 md:py-6"
+      class="flex items-center justify-between overflow-hidden bg-White-Dark-Mode-Text-&-Light-Mode-Elements px-6 py-9 shadow-md md:px-16 md:py-6"
     >
-      <a href="index.html" class="text-lg font-bold md:text-2xl">Where in the world?</a>
+      <a href="index.html" class="text-lg font-bold md:text-2xl"
+        >Where in the world?</a
+      >
       <div class="flex items-center space-x-2">
         <ion-icon name="moon-outline" size="small"></ion-icon>
         <div class="font-semibold">Dark Mode</div>
       </div>
     </nav>
     <main class="px-6 md:px-16">
-      <div id="filters-container" class="my-8 flex flex-col md:my-12 md:flex-row md:justify-between">
+      <div
+        id="filters-container"
+        class="my-8 flex flex-col md:my-12 md:flex-row md:justify-between"
+      >
         <div
           class="mb-10 flex max-w-lg items-center rounded-md bg-white py-5 shadow-md md:mb-0 md:w-512"
         >
@@ -39,13 +44,17 @@
             class="placeholder:text- w-full focus:outline-none"
           />
         </div>
-        <button id="region-filter-btn"
+        <button
+          id="region-filter-btn"
           class="relative flex max-w-fit items-center space-x-16 whitespace-nowrap rounded-md bg-white p-6 font-semibold shadow-md md:space-x-12"
         >
           <span>Filter by Region</span>
-          <ion-icon name="chevron-down-outline" class="ease-out duration-300"></ion-icon>
+          <ion-icon
+            name="chevron-down-outline"
+            class="duration-300 ease-out"
+          ></ion-icon>
           <ul
-            class="hidden absolute right-0 top-[110%] z-50 w-full space-y-2 rounded-md bg-white p-6 text-left shadow-md ease-out duration-300"
+            class="absolute right-0 top-[110%] z-50 hidden w-full space-y-2 rounded-md bg-white p-6 text-left shadow-md duration-300 ease-out"
           >
             <li>Africa</li>
             <li>America</li>
@@ -72,4 +81,4 @@
     ></script>
   </body>
 </html>
-<img src="" alt="" srcset="">
+<img src="" alt="" srcset="" />
