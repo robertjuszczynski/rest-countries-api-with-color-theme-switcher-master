@@ -4,32 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="If you need information about your country, come to us!"
+    />
+    <title>CountriesInfo</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      const html = document.querySelector("html");
+      localStorage.getItem("theme") == "dark"
+        ? html.classList.add("dark")
+        : html.classList.remove("dark")
+    </script>
     <script
       src="https://kit.fontawesome.com/64416a7c11.js"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-Very-Light-Gray-Light-Mode-Background text-sm">
+  <body
+    class="bg-veryLightGrayBg text-sm dark:bg-veryDarkBlueBg dark:text-whiteTextEl"
+  >
     <header
-      class="flex items-center justify-between overflow-hidden bg-White-Dark-Mode-Text-&-Light-Mode-Elements px-6 py-9 shadow-md md:px-16 md:py-6"
+      class="flex items-center justify-between overflow-hidden bg-whiteTextEl px-6 py-9 shadow-md dark:bg-darkBlue sm:px-16 sm:py-6"
     >
-      <a href="index.html" class="text-lg font-bold md:text-2xl"
+      <a href="index.html" class="text-lg font-bold sm:text-2xl"
         >Where in the world?</a
       >
-      <div class="flex items-center space-x-2">
-        <ion-icon name="moon-outline" size="small"></ion-icon>
-        <div class="font-semibold">Dark Mode</div>
-      </div>
+      <button data-theme-changer class="relative items-center">
+        <div class="absolute -left-8 top-[10px] flex flex-col space-y-16 duration-500 ease-out">
+          <i class="hidden fa-regular fa-moon fa-lg"></i>
+          <i class="fa-regular fa-sun fa-lg"></i>
+        </div>
+        <span>Dark Mode</span>
+      </button>
     </header>
-    <main class="px-8 md:px-16 pb-12">
-      <nav
-        id="filters-container"
-        class="my-8 flex flex-col md:my-12 md:flex-row md:justify-between"
-      >
+    <main class="px-8 pb-12 sm:px-16">
+      <nav class="my-8 flex flex-col md:my-12 md:flex-row md:justify-between">
         <div
-          class="mb-10 flex max-w-lg items-center rounded-md bg-white py-5 shadow-md md:mb-0 md:w-512"
+          class="mb-10 flex max-w-lg items-center rounded-md bg-whiteTextEl py-5 shadow-md dark:bg-darkBlue md:mb-0 md:w-512"
         >
           <label for="country-search">
             <i
@@ -41,26 +53,23 @@
             id="country-search"
             type="search"
             placeholder="Search for a country..."
-            class="placeholder:text- w-full focus:outline-none"
+            class="placeholder:text- w-full focus:outline-none dark:bg-darkBlue placeholder:dark:dark:text-whiteTextEl"
           />
         </div>
         <button
           id="region-filter-btn"
-          class="relative flex max-w-fit items-center space-x-16 whitespace-nowrap rounded-md bg-white p-6 font-semibold shadow-md md:space-x-12"
+          class="relative flex max-w-fit items-center space-x-16 whitespace-nowrap rounded-md bg-whiteTextEl p-6 shadow-md dark:bg-darkBlue md:space-x-12"
         >
           <span>Filter by Region</span>
-          <ion-icon
-            name="chevron-down-outline"
-            class="duration-300 ease-out"
-          ></ion-icon>
+          <i class="fa-solid fa-chevron-down duration-300 ease-out"></i>
           <ul
-            data-regions-menu class="absolute right-0 top-[110%] z-50 hidden w-full space-y-2 rounded-md bg-white p-6 text-left shadow-md duration-300 ease-out"
+            class="absolute right-0 top-[110%] z-50 hidden w-full space-y-2 rounded-md bg-whiteTextEl p-6 text-left shadow-md duration-300 ease-out dark:bg-darkBlue"
           >
-            <li data-region>Africa</li>
-            <li data-region>America</li>
-            <li data-region>Asia</li>
-            <li data-region>Europe</li>
-            <li data-region>Oceania</li>
+            <li>Africa</li>
+            <li>America</li>
+            <li>Asia</li>
+            <li>Europe</li>
+            <li>Oceania</li>
           </ul>
         </button>
       </nav>
@@ -71,13 +80,5 @@
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./app.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
   </body>
 </html>
