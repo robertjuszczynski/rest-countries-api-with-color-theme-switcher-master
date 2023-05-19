@@ -4,17 +4,21 @@ export const useCountriesStore = defineStore('country', {
   state: () => {
     return {
       countries: [],
-      filteredCountries: []
+      filteredCountries: [],
+      isFetching: true
     }
   },
   getters: {
     getFilteredCountries(state) {
       return state.filteredCountries
+    },
+    getFetchStatus(state) {
+      return state.isFetching
     }
   },
   actions: {
     fetchCountries() {
-      fetch('countries.json')
+      fetch('https://restcountries.com/v3.1/all')
         .then((res) => {
           if (res.ok) {
             return res.json()
@@ -25,6 +29,7 @@ export const useCountriesStore = defineStore('country', {
         .then((res) => {
           this.countries = res
           this.filteredCountries = res
+          this.fetching = false
         })
         .catch((error) => {
           console.error(error)

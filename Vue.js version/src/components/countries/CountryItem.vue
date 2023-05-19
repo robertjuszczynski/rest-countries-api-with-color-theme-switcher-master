@@ -1,12 +1,5 @@
 <template>
-  <section
-    class="dark:bg-darkBlue cursor-pointer"
-    @click="
-      () => {
-        console.log(country)
-      }
-    "
-  >
+  <section class="dark:bg-darkBlue cursor-pointer" @click="showCountryDetails">
     <div
       class="bg-cover bg-center h-[47.5%]"
       :style="{ 'background-image': 'url(' + country.flags.png + ')' }"
@@ -15,14 +8,28 @@
       <h2>{{ country.name.common }}</h2>
       <p><span>Population: </span>{{ country.population.toLocaleString('en-US') }}</p>
       <p><span>Region: </span>{{ country.region }}</p>
-      <p><span>Capital: </span>{{ country.capital }}</p>
+      <p><span>Capital: </span>{{ capital }}</p>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  props: ['country']
+  props: ['country'],
+  methods: {
+    showCountryDetails() {
+      this.$router.push(`/countries/${this.country.cca3}`)
+    }
+  },
+  computed: {
+    capital() {
+      if (this.country.capital !== undefined) {
+        return this.country.capital.join(', ')
+      } else {
+        return 'No capital.'
+      }
+    }
+  }
 }
 </script>
 
