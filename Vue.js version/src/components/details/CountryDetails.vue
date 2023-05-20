@@ -5,7 +5,7 @@
     <div
       class="sm:flex sm:flex-col sm:text-center sm:items-center xl:text-left xl:flex xl:flex-col xl:items-stretch xl:min-w-[400px]"
     >
-      <h1 class="text-[22px]" @click="cipa">{{ name }}</h1>
+      <h1 class="text-[22px]">{{ name }}</h1>
       <div class="xl:flex xl:justify-between xl:mt-8 xl:mb-10 xl:space-x-16 leading-8">
         <div class="my-6 xl:my-0">
           <p><span>Native Name: </span>{{ name }}</p>
@@ -20,43 +20,68 @@
           <p><span>Languages: </span>{{ languages }}</p>
         </div>
       </div>
-      <CountryDetailsBorders :borders="borders" />
+      <CountryDetailsBorders :borders="formattedBorders" />
     </div>
   </div>
 </template>
 
 <script>
+import { useCountriesStore } from '../../stores/useCountriesStore'
 import CountryDetailsBackButton from './CountryDetailsBackButton.vue'
 import CountryDetailsBorders from './CountryDetailsBorders.vue'
 import CountryDetailsImage from './CountryDetailsImage.vue'
+
 export default {
   props: ['country'],
-  data() {
-    return {
-      name: this.country.name.common,
-      src: this.country.flags.png,
-      alt: this.country.flags.alt,
-      population: this.country.population.toLocaleString('en-US'),
-      region: this.country.region,
-      subregion: this.country.subregion,
-      capital: this.country.capital.join(', '),
-      topLevelDomain: this.country.tld.join(),
-      currencies: Object.values(this.country.currencies)
+  computed: {
+    name() {
+      return this.country.name.common
+    },
+    src() {
+      return this.country.flags.png
+    },
+    alt() {
+      return this.country.flags.alt
+    },
+    population() {
+      return this.country.population.toLocaleString('en-US')
+    },
+    region() {
+      return this.country.region
+    },
+    subregion() {
+      return this.country.subregion
+    },
+    capital() {
+      return this.country.capital.join(', ')
+    },
+    topLevelDomain() {
+      return this.country.tld.join()
+    },
+    currencies() {
+      return Object.values(this.country.currencies)
         .map((currency) => currency.name)
-        .join(', '),
-      languages: Object.values(this.country.languages).join(', '),
-      borders: this.country.borders
+        .join(', ')
+    },
+    languages() {
+      return Object.values(this.country.languages).join(', ')
+    },
+    formattedBorders() {
+      const countries = useCountriesStore().countries
+      if (this.country.borders !== undefined) {
+        return this.country.borders.map((border) => {
+          const country = countries.find((c) => c.cca3 === border)
+          return { name: country.name.common, cca3: country.cca3 }
+        })
+      } else {
+        return []
+      }
     }
   },
   components: {
     CountryDetailsImage,
     CountryDetailsBorders,
     CountryDetailsBackButton
-  },
-  methods: {
-    cipa() {
-      console.log(this.country)
-    }
   }
 }
 </script>

@@ -7,7 +7,6 @@
     </label>
     <input
       ref="input"
-      id="country-search"
       type="search"
       placeholder="Search for a country..."
       class="w-full focus:outline-none dark:bg-darkBlue placeholder:dark:dark:text-whiteTextEl"

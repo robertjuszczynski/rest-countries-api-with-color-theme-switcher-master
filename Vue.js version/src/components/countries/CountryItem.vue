@@ -1,5 +1,5 @@
 <template>
-  <section class="dark:bg-darkBlue cursor-pointer" @click="showCountryDetails">
+  <BaseSection @click="showCountryDetails">
     <div
       class="bg-cover bg-center h-[47.5%]"
       :style="{ 'background-image': 'url(' + country.flags.png + ')' }"
@@ -10,12 +10,17 @@
       <p><span>Region: </span>{{ country.region }}</p>
       <p><span>Capital: </span>{{ capital }}</p>
     </div>
-  </section>
+  </BaseSection>
 </template>
 
 <script>
+import BaseSection from '../UI/BaseSection.vue'
+
 export default {
   props: ['country'],
+  components: {
+    BaseSection
+  },
   methods: {
     showCountryDetails() {
       this.$router.push(`/countries/${this.country.cca3}`)

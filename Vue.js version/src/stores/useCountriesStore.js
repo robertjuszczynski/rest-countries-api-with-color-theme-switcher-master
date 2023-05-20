@@ -5,15 +5,12 @@ export const useCountriesStore = defineStore('country', {
     return {
       countries: [],
       filteredCountries: [],
-      isFetching: true
+      fetching: true
     }
   },
   getters: {
     getFilteredCountries(state) {
       return state.filteredCountries
-    },
-    getFetchStatus(state) {
-      return state.isFetching
     }
   },
   actions: {
@@ -29,10 +26,12 @@ export const useCountriesStore = defineStore('country', {
         .then((res) => {
           this.countries = res
           this.filteredCountries = res
-          this.fetching = false
         })
         .catch((error) => {
           console.error(error)
+        })
+        .finally(() => {
+          this.fetching = false
         })
     },
     filterCountriesByRegion(region) {
