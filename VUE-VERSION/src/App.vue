@@ -1,6 +1,8 @@
 <template>
   <TheHeader />
-  <router-view v-if="!fetching" />
+  <main class="px-8 pb-12 sm:px-16">
+    <router-view v-if="!fetching" />
+  </main>
 </template>
 
 <script>

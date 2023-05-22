@@ -1,12 +1,10 @@
 <template>
-  <main class="px-8 pb-12 sm:px-16">
-    <CountryDetails v-if="country" :country="country" :key="country.cca3" />
-    <div v-else>
-      <br />
-      <h1 class="text-lg">Oops... No country found :/</h1>
-      <router-link to="/countries">Go home?</router-link>
-    </div>
-  </main>
+  <CountryDetails v-if="country" :country="country" :key="country.cca3" />
+  <div v-else>
+    <br />
+    <h1 class="text-lg">Oops... No country found :/</h1>
+    <router-link to="/countries">Go home?</router-link>
+  </div>
 </template>
 
 <script>

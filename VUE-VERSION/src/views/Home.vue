@@ -1,8 +1,6 @@
 <template>
-  <main class="px-8 pb-12 sm:px-16">
     <Filters />
     <Countries />
-  </main>
 </template>
 
 <script>

@@ -8,7 +8,8 @@ import App from './App.vue'
 import './index.css'
 
 const routes = [
-  { path: '/countries', name: 'Home', component: Home, alias: '/' },
+  { path: '/', redirect: '/countries' },
+  { path: '/countries', name: 'Home', component: Home },
   { path: '/countries/:id', name: 'AboutCountry', component: AboutCountry },
   { path: '/:pathMatch(.*)*', component: NotFound }
 ]
